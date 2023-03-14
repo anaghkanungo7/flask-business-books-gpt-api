@@ -1,0 +1,205 @@
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 2.86102294921875e-06
+DEBUG:Chroma:time to run knn query: 0.0003502368927001953
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 6.198883056640625e-06
+DEBUG:Chroma:time to run knn query: 0.000331878662109375
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 7.867813110351562e-06
+DEBUG:Chroma:time to run knn query: 0.00044608116149902344
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.0002980232238769531
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 19:17:23] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 4.0531158447265625e-06
+DEBUG:Chroma:time to run knn query: 0.000823974609375
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 19:17:58] "POST /answer HTTP/1.1" 200 -
+ERROR:app:Exception on /answer [POST]
+Traceback (most recent call last):
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/anaghkanungo/Developer/OpenBB/flask-book-api/app.py", line 23, in answer
+    result = getAnswer(api_key, prompt, temperature)
+  File "/Users/anaghkanungo/Developer/OpenBB/flask-book-api/answer.py", line 29, in getAnswer
+    result = qa_chain.run(prompt)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/chains/base.py", line 213, in run
+    return self(args[0])[self.output_keys[0]]
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/chains/base.py", line 116, in __call__
+    raise e
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/chains/base.py", line 113, in __call__
+    outputs = self._call(inputs)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/chains/vector_db_qa/base.py", line 152, in _call
+    docs = self.vectorstore.similarity_search(
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/vectorstores/chroma.py", line 133, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(query, k)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/vectorstores/chroma.py", line 175, in similarity_search_with_score
+    query_embedding = self._embedding_function.embed_query(query)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/embeddings/openai.py", line 220, in embed_query
+    embedding = self._embedding_func(text, engine=self.query_model_name)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/embeddings/openai.py", line 179, in _embedding_func
+    return embed_with_retry(self, input=[text], engine=engine)["data"][0][
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/embeddings/openai.py", line 53, in embed_with_retry
+    return _completion_with_retry(**kwargs)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/tenacity/__init__.py", line 289, in wrapped_f
+    return self(f, *args, **kw)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/tenacity/__init__.py", line 379, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/concurrent/futures/_base.py", line 439, in result
+    return self.__get_result()
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/concurrent/futures/_base.py", line 391, in __get_result
+    raise self._exception
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/tenacity/__init__.py", line 382, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/langchain/embeddings/openai.py", line 51, in _completion_with_retry
+    return embeddings.client.create(**kwargs)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/openai/api_resources/embedding.py", line 33, in create
+    response = super().create(*args, **kwargs)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/openai/api_resources/abstract/engine_api_resource.py", line 153, in create
+    response, _, api_key = requestor.request(
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/openai/api_requestor.py", line 226, in request
+    resp, got_stream = self._interpret_response(result, stream)
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/openai/api_requestor.py", line 619, in _interpret_response
+    self._interpret_response_line(
+  File "/Users/anaghkanungo/opt/anaconda3/lib/python3.9/site-packages/openai/api_requestor.py", line 682, in _interpret_response_line
+    raise self.handle_error_response(
+openai.error.AuthenticationError: Incorrect API key provided: sk-T8sCb*******************************Qfyp. You can find your API key at https://platform.openai.com/account/api-keys.
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 19:18:39] "[35m[1mPOST /answer HTTP/1.1[0m" 500 -
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+DEBUG:Chroma:time to pre process our knn query: 1.9073486328125e-06
+DEBUG:Chroma:time to run knn query: 0.00025177001953125
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 19:22:09] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 19:22:16] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 4.0531158447265625e-06
+DEBUG:Chroma:time to run knn query: 0.0004229545593261719
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 19:22:24] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 1.9073486328125e-06
+DEBUG:Chroma:time to run knn query: 0.0002219676971435547
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 23:39:33] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.00023984909057617188
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.0002110004425048828
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 23:41:27] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 5.0067901611328125e-06
+DEBUG:Chroma:time to run knn query: 0.0003268718719482422
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 23:41:42] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.0002911090850830078
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 23:45:05] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 4.0531158447265625e-06
+DEBUG:Chroma:time to run knn query: 0.0005121231079101562
+INFO:werkzeug:127.0.0.1 - - [13/Mar/2023 23:45:23] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 4.0531158447265625e-06
+DEBUG:Chroma:time to run knn query: 0.002521991729736328
+DEBUG:Chroma:time to pre process our knn query: 9.5367431640625e-07
+DEBUG:Chroma:time to run knn query: 0.0001621246337890625
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:14] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:14] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:14] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 4.0531158447265625e-06
+DEBUG:Chroma:time to run knn query: 0.0005271434783935547
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:15] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:15] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:15] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.0001728534698486328
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:17] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:17] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:18] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:21] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:25] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:25] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:25] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:30:55] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:Logger created
+WARNING:langchain.embeddings.openai:Retrying langchain.embeddings.openai.embed_with_retry.<locals>._completion_with_retry in 4.0 seconds as it raised RateLimitError: The server is currently overloaded with other requests. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if the error persists..
+DEBUG:Chroma:time to pre process our knn query: 2.86102294921875e-06
+DEBUG:Chroma:time to run knn query: 0.000244140625
+DEBUG:Chroma:Logger created
+DEBUG:Chroma:time to pre process our knn query: 5.0067901611328125e-06
+DEBUG:Chroma:time to run knn query: 0.0004930496215820312
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+DEBUG:Chroma:time to pre process our knn query: 4.0531158447265625e-06
+DEBUG:Chroma:time to run knn query: 0.00032210350036621094
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:40:32] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:40:41] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 3.0994415283203125e-06
+DEBUG:Chroma:time to run knn query: 0.0004138946533203125
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:40:47] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:42:27] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 7.867813110351562e-06
+DEBUG:Chroma:time to run knn query: 0.0006992816925048828
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:42:31] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:43:01] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.0002760887145996094
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:43:04] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:43:39] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:43:40] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:57:13] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 2.86102294921875e-06
+DEBUG:Chroma:time to run knn query: 0.0005710124969482422
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:57:17] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:58:03] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 2.6226043701171875e-06
+DEBUG:Chroma:time to run knn query: 0.00043892860412597656
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 00:58:11] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:01:32] "OPTIONS /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:01:33] "POST /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 3.814697265625e-06
+DEBUG:Chroma:time to run knn query: 0.0002582073211669922
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:01:38] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:01:50] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 3.0994415283203125e-06
+DEBUG:Chroma:time to run knn query: 0.0007417201995849609
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:01:54] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:05:11] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.00026798248291015625
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:05:15] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:12:23] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 9.5367431640625e-07
+DEBUG:Chroma:time to run knn query: 0.00025081634521484375
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:12:30] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:14:15] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 3.814697265625e-06
+DEBUG:Chroma:time to run knn query: 0.0005521774291992188
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:14:20] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:14:40] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 2.1457672119140625e-06
+DEBUG:Chroma:time to run knn query: 0.00022411346435546875
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:14:45] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:15:12] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 5.0067901611328125e-06
+DEBUG:Chroma:time to run knn query: 0.0004210472106933594
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:15:15] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:17:49] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 1.9073486328125e-06
+DEBUG:Chroma:time to run knn query: 0.00041794776916503906
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:17:53] "POST /answer HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:22:02] "OPTIONS /answer HTTP/1.1" 200 -
+DEBUG:Chroma:time to pre process our knn query: 1.9073486328125e-06
+DEBUG:Chroma:time to run knn query: 0.00024819374084472656
+INFO:werkzeug:127.0.0.1 - - [14/Mar/2023 01:22:04] "POST /answer HTTP/1.1" 200 -
